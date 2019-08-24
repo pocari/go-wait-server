@@ -4,12 +4,14 @@
 
 # 使い方
 
+## ビルド
+
 ```
 $ go get https://github.com/pocari/go-wait-server
 $ go-wait-server
 ```
 
-# 別端末で
+## 別端末で
 
 ```
 curl localhost:8080/wait?time=5
