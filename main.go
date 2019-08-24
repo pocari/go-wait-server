@@ -15,7 +15,7 @@ type requestParams struct {
 	waitTime int
 }
 
-type responseParams struct {
+type responseObject struct {
 	Status  int    `json:"status"`
 	Message string `json:"message"`
 }
@@ -73,7 +73,7 @@ func JSONSafeMarshal(v interface{}, safeEncoding bool) ([]byte, error) {
 func waitHandler(w http.ResponseWriter, r *http.Request) {
 	log.Println("start handler", r)
 	w.Header().Set("Content-Type", "application/json")
-	resParam := responseParams{}
+	resParam := responseObject{}
 
 	reqParam, err := parseParams(r)
 	if err != nil {
