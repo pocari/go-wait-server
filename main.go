@@ -5,11 +5,10 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 	"strconv"
 	"time"
-
-	"github.com/siddontang/go/log"
 )
 
 type requestParams struct {
@@ -44,17 +43,17 @@ func parseParams(r *http.Request) (*requestParams, error) {
 }
 
 func wait(ctx context.Context, waitTime int) {
-	log.Info(fmt.Sprintf("waitTime: %v\n", waitTime))
+	log.Printf(fmt.Sprintf("waitTime: %v\n", waitTime))
 	waitCh := time.After(time.Duration(waitTime) * time.Second)
 	for {
 		select {
 		case <-waitCh:
 			return
 		case <-ctx.Done():
-			log.Info("requst canceled!")
+			log.Println("requst canceled!")
 			return
 		default:
-			log.Info("wait ...")
+			log.Println("wait ...")
 			time.Sleep(1 * time.Second)
 		}
 	}
@@ -71,7 +70,7 @@ func JSONSafeMarshal(v interface{}, safeEncoding bool) ([]byte, error) {
 }
 
 func waitHandler(w http.ResponseWriter, r *http.Request) {
-	log.Info("start handler", r)
+	log.Println("start handler", r)
 	w.Header().Set("Content-Type", "application/json")
 	resParam := responseParams{}
 
@@ -98,7 +97,7 @@ func waitHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	w.Write(data)
-	log.Info("end handler")
+	log.Println("end handler")
 	return
 }
 
