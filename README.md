@@ -7,7 +7,7 @@
 ## ビルドしてサーバー起動
 
 ```
-$ go get https://github.com/pocari/go-wait-server
+$ go get github.com/pocari/go-wait-server
 $ go-wait-server
 ```
 
