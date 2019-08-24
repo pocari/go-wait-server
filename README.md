@@ -4,7 +4,7 @@
 
 # 使い方
 
-## ビルド
+## ビルドしてサーバー起動
 
 ```
 $ go get https://github.com/pocari/go-wait-server
@@ -20,3 +20,4 @@ root@51421ff38733:/go# curl localhost:8080/wait?time=5
 ```
 
 time=X で指定した秒数待ってレスポンスが返ってくる(0 <= X <= 30)
+待っている間にクライアント側で、Ctr-C とかで curl を止めたら、サーバ側の wait 処理も（まだ残り時間あってもキャンセルする
