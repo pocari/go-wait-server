@@ -59,6 +59,7 @@ func wait(ctx context.Context, waitTime int) {
 	}
 }
 
+// https://fisproject.jp/2017/01/golang-tips/
 func JSONSafeMarshal(v interface{}, safeEncoding bool) ([]byte, error) {
 	b, err := json.Marshal(v)
 	if safeEncoding {
