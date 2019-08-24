@@ -50,7 +50,7 @@ func wait(ctx context.Context, waitTime int) {
 		case <-waitCh:
 			return
 		case <-ctx.Done():
-			log.Println("requst canceled!")
+			log.Println("request canceled!")
 			return
 		default:
 			log.Println("wait ...")
