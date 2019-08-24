@@ -92,7 +92,7 @@ func waitHandler(w http.ResponseWriter, r *http.Request) {
 
 	resParam.Status = http.StatusOK
 	resParam.Message = "success"
-	data, err := json.Marshal(resParam)
+	data, err := JSONSafeMarshal(resParam, true)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
